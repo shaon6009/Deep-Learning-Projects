@@ -1,0 +1,150 @@
+1. ANN (Artificial Neural Network)
+ব্যবহার:
+ট্যাবুলার ডেটা (যেমন লোন অনুমোদন, গ্রাহক সেগমেন্টেশন)।
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+model = Sequential([
+    Dense(16, input_shape=(10,), activation='relu'),
+    Dense(8, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(x_train, y_train, epochs=10, batch_size=32)
+
+
+
+2. CNN (Convolutional Neural Network)
+ব্যবহার:
+ইমেজ ডেটা (যেমন ইমেজ ক্লাসিফিকেশন, অবজেক্ট ডিটেকশন)।
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
+
+model = Sequential([
+    Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 3)),
+    MaxPooling2D(pool_size=(2, 2)),
+    Conv2D(64, (3, 3), activation='relu'),
+    MaxPooling2D(pool_size=(2, 2)),
+    Flatten(),
+    Dense(128, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
+
+
+3. RNN (Recurrent Neural Network)
+ব্যবহার:
+টাইম সিরিজ ডেটা বা সিকোয়েন্স ডেটা (যেমন স্টক প্রাইস প্রেডিকশন, টেক্সট জেনারেশন)।
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import SimpleRNN, Dense
+
+model = Sequential([
+    SimpleRNN(50, input_shape=(30, 1), activation='tanh'),
+    Dense(1, activation='sigmoid')
+])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
+
+
+4. LSTM (Long Short-Term Memory)
+ব্যবহার:
+লম্বা সিকোয়েন্স ডেটা (যেমন ভাষা মডেলিং, ভিডিও অ্যানালাইসিস)।
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import LSTM, Dense
+
+model = Sequential([
+    LSTM(50, input_shape=(30, 1), activation='tanh'),
+    Dense(1, activation='sigmoid')
+])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
+
+
+5. GRU (Gated Recurrent Unit)
+ব্যবহার:
+টাইম সিরিজ বা সিকোয়েন্স ডেটা (যেখানে কম্পিউটেশনের সময় কম গুরুত্বপূর্ণ)।
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import GRU, Dense
+
+model = Sequential([
+    GRU(50, input_shape=(30, 1), activation='tanh'),
+    Dense(1, activation='sigmoid')
+])
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
+
+
+6. Autoencoder
+ব্যবহার:
+ডেটা কমপ্রেশন বা ফিচার এক্সট্রাকশন।
+
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Input, Dense
+
+input_layer = Input(shape=(100,))
+encoded = Dense(64, activation='relu')(input_layer)
+encoded = Dense(32, activation='relu')(encoded)
+decoded = Dense(64, activation='relu')(encoded)
+decoded = Dense(100, activation='sigmoid')(decoded)
+
+model = Model(inputs=input_layer, outputs=decoded)
+model.compile(optimizer='adam', loss='mse')
+model.fit(x_train, x_train, epochs=10, batch_size=32)
+
+
+7. GAN (Generative Adversarial Network)
+ব্যবহার:
+সিন্থেটিক ডেটা বা ইমেজ জেনারেশন।
+
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+
+generator = Sequential([
+    Dense(128, activation='relu', input_dim=100),
+    Dense(256, activation='relu'),
+    Dense(784, activation='sigmoid')
+])
+
+discriminator = Sequential([
+    Dense(256, activation='relu', input_dim=784),
+    Dense(128, activation='relu'),
+    Dense(1, activation='sigmoid')
+])
+discriminator.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+
+
+8. Transformer (Attention Mechanism)
+ব্যবহার:
+টেক্সট ডেটা (যেমন মেশিন ট্রান্সলেশন, টেক্সট সামারাইজেশন)।
+
+from transformers import TFAutoModelForSequenceClassification, AutoTokenizer
+
+model_name = "distilbert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = TFAutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+inputs = tokenizer(x_train, padding=True, truncation=True, return_tensors="tf")
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.fit(inputs.data, y_train, epochs=10, batch_size=32)
+
+
+
+
+
+
+মডেল ও তাদের ব্যবহার:
+মডেল	                             কাজের ধরন	                                         উদাহরণ
+ANN	                             ট্যাবুলার ডেটা	লোন অনুমোদন,                           গ্রাহক সেগমেন্টেশন
+CNN	                             ইমেজ প্রসেসিং,কুকুর-বিড়াল চেনা,                       অবজেক্ট ডিটেকশন
+RNN	                             টাইম সিরিজ বা সিকোয়েন্স ডেটা	স্টক প্রাইস প্রেডিকশন,      টেক্সট জেনারেশন
+LSTM	                             লম্বা সিকোয়েন্স ডেটা,ভাষা মডেলিং,                      ভিডিও অ্যানালাইসিস
+GRU	                             টাইম সিরিজ ডেটা	                                 টাইম সিরিজ অ্যানালাইসিস
+Autoencoder	                     ডেটা কমপ্রেশন	                                 ফিচার এক্সট্রাকশন
+GAN	                             ডেটা জেনারেশন	                                 ফেক ইমেজ বা ডেটা তৈরি
+Transformer	                     টেক্সট ডেটা	ভাষা ট্রান্সলেশন,                           টেক্সট সামারাইজেশন
+
