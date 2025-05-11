@@ -1,7 +1,11 @@
-1. ANN (Artificial Neural Network)
+১. ANN (Artificial Neural Network)
 ব্যবহার:
 ট্যাবুলার ডেটা (যেমন লোন অনুমোদন, গ্রাহক সেগমেন্টেশন)।
 
+কোড উদাহরণ:
+python
+Copy
+Edit
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
@@ -12,13 +16,27 @@ model = Sequential([
 ])
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(x_train, y_train, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Input Layer Shape: ইনপুট ডেটার আকার। যেমন input_shape=(10,) মানে ১০টি ফিচার।
 
+Number of Neurons: প্রতিটি লেয়ার কতটি নিউরন থাকবে তা নির্ধারণ করে।
 
+Activation Function: মডেলটি কিভাবে আউটপুট বের করবে। যেমন relu, sigmoid।
 
-2. CNN (Convolutional Neural Network)
+Optimizer: মডেলকে আপডেট করার জন্য ব্যবহৃত হয়। যেমন adam।
+
+Loss Function: আউটপুট কতটা ভুল তা জানার জন্য। যেমন binary_crossentropy।
+
+Batch Size: প্রতিটি ব্যাচে কতটি ডেটা পয়েন্ট থাকবে তা নির্ধারণ করে।
+
+২. CNN (Convolutional Neural Network)
 ব্যবহার:
 ইমেজ ডেটা (যেমন ইমেজ ক্লাসিফিকেশন, অবজেক্ট ডিটেকশন)।
 
+কোড উদাহরণ:
+python
+Copy
+Edit
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 
@@ -33,12 +51,23 @@ model = Sequential([
 ])
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Kernel Size: কনভলিউশনাল লেয়ারের ফিল্টার সাইজ।
 
+Strides: কনভলিউশন অপারেশন চলাকালীন কতটা এগিয়ে যাবে।
 
-3. RNN (Recurrent Neural Network)
+Pooling Size: ম্যাক্স পুলিং বা অ্যাভারেজ পুলিংয়ের সাইজ।
+
+Filters: কনভলিউশনাল লেয়ারে কতটি ফিল্টার থাকবে তা নির্ধারণ করে।
+
+৩. RNN (Recurrent Neural Network)
 ব্যবহার:
 টাইম সিরিজ ডেটা বা সিকোয়েন্স ডেটা (যেমন স্টক প্রাইস প্রেডিকশন, টেক্সট জেনারেশন)।
 
+কোড উদাহরণ:
+python
+Copy
+Edit
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import SimpleRNN, Dense
 
@@ -48,12 +77,21 @@ model = Sequential([
 ])
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Units (Neurons): প্রতিটি RNN লেয়ারে নিউরনের সংখ্যা।
 
+Activation Function: tanh বা relu।
 
-4. LSTM (Long Short-Term Memory)
+Timesteps: সিকোয়েন্সের দৈর্ঘ্য বা টাইমস্টেপ।
+
+৪. LSTM (Long Short-Term Memory)
 ব্যবহার:
 লম্বা সিকোয়েন্স ডেটা (যেমন ভাষা মডেলিং, ভিডিও অ্যানালাইসিস)।
 
+কোড উদাহরণ:
+python
+Copy
+Edit
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM, Dense
 
@@ -63,12 +101,21 @@ model = Sequential([
 ])
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Units: LSTM(50)-এ ৫০টি ইউনিট।
 
+Dropout Rate: রেগুলারাইজেশন জন্য ব্যবহৃত হয়।
 
-5. GRU (Gated Recurrent Unit)
+Return_sequences: True হলে প্রতিটি টাইমস্টেপের জন্য আউটপুট ফেরত দেয়।
+
+৫. GRU (Gated Recurrent Unit)
 ব্যবহার:
-টাইম সিরিজ বা সিকোয়েন্স ডেটা (যেখানে কম্পিউটেশনের সময় কম গুরুত্বপূর্ণ)।
+টাইম সিরিজ ডেটা বা সিকোয়েন্স ডেটা (যেখানে কম্পিউটেশনের সময় কম গুরুত্বপূর্ণ)।
 
+কোড উদাহরণ:
+python
+Copy
+Edit
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import GRU, Dense
 
@@ -78,12 +125,19 @@ model = Sequential([
 ])
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Units: GRU-তে ইউনিট সংখ্যা নির্ধারণ করে।
 
+Activation Function: tanh বা sigmoid।
 
-6. Autoencoder
+৬. Autoencoder
 ব্যবহার:
 ডেটা কমপ্রেশন বা ফিচার এক্সট্রাকশন।
 
+কোড উদাহরণ:
+python
+Copy
+Edit
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Dense
 
@@ -96,12 +150,19 @@ decoded = Dense(100, activation='sigmoid')(decoded)
 model = Model(inputs=input_layer, outputs=decoded)
 model.compile(optimizer='adam', loss='mse')
 model.fit(x_train, x_train, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Encoding Dimension: অটোকোডারে ফিচার সংকুচিত করা হয়।
 
+Latent Space: ডেটার compressed representation।
 
-7. GAN (Generative Adversarial Network)
+৭. GAN (Generative Adversarial Network)
 ব্যবহার:
 সিন্থেটিক ডেটা বা ইমেজ জেনারেশন।
 
+কোড উদাহরণ:
+python
+Copy
+Edit
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 
@@ -117,12 +178,19 @@ discriminator = Sequential([
     Dense(1, activation='sigmoid')
 ])
 discriminator.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Latent Space Dimension: input_dim=100 মানে এটি ১০০টি বৈশিষ্ট্য দিয়ে ইমেজ তৈরি করবে।
 
+Number of Layers: জেনারেটর ও ডিসক্রিমিনেটরের জন্য লেয়ার সংখ্যা নির্ধারণ করা।
 
-8. Transformer (Attention Mechanism)
+৮. Transformer (Attention Mechanism)
 ব্যবহার:
 টেক্সট ডেটা (যেমন মেশিন ট্রান্সলেশন, টেক্সট সামারাইজেশন)।
 
+কোড উদাহরণ:
+python
+Copy
+Edit
 from transformers import TFAutoModelForSequenceClassification, AutoTokenizer
 
 model_name = "distilbert-base-uncased"
@@ -131,40 +199,217 @@ model = TFAutoModelForSequenceClassification.from_pretrained(model_name, num_lab
 inputs = tokenizer(x_train, padding=True, truncation=True, return_tensors="tf")
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 model.fit(inputs.data, y_train, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Hidden Size: লুকানো স্তরের আকার নির্ধারণ করে।
+
+Attention Heads: একাধিক অ্যাটেনশন হেড ব্যবহার করা হয় (যেমন ৮ বা ১২)।
 
 
+৯. ResNet (Residual Networks)
+ব্যবহার:
+ডিপ নেটওয়ার্কসের জন্য ব্যবহৃত হয়, বিশেষত ইমেজ ক্লাসিফিকেশন, অবজেক্ট ডিটেকশন, সেগমেন্টেশন ইত্যাদি।
 
-9. RCNN (Region-based Convolutional Neural Network) একটি জনপ্রিয় এবং শক্তিশালী নেটওয়ার্ক আর্কিটেকচার যা অবজেক্ট ডিটেকশন এর কাজে ব্যবহৃত হয়। 
-এটি কনভোলিউশনাল নিউরাল নেটওয়ার্ক (CNN) কে রিজন প্রপোজাল নেটওয়ার্ক (RPN) এর সাথে একত্রিত করে, যেখানে প্রথমে বিভিন্ন সম্ভাব্য অবজেক্ট রিজন তৈরি করা হয়, 
-তারপর CNN দ্বারা তাদের বৈশিষ্ট্য বের করে এবং শেষে সেগুলি ক্লাসিফাই করা হয়। (# RCNN এর জন্য backbone হিসেবে ResNet ব্যবহার করা যেতে পারে)
+কোড উদাহরণ:
+python
+Copy
+Edit
+from tensorflow.keras.applications import ResNet50
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
 
-base_model = keras.applications.ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-base_model.trainable = False
-def roi_pooling(input, boxes, output_size):
-    return input
-def rcnn_model():
-    inputs = keras.Input(shape=(224, 224, 3))
-    x = base_model(inputs)
-    rois = roi_pooling(x, boxes=None, output_size=(7, 7))
-    x = layers.Flatten()(rois)
-    x = layers.Dense(1024, activation='relu')(x)
-    x = layers.Dropout(0.5)(x)
-    output = layers.Dense(2, activation='softmax')(x)
-    model = Model(inputs, output)
-    return model
-model = rcnn_model()
+base_model = ResNet50(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+x = Dense(1024, activation='relu')(x)
+x = Dense(10, activation='softmax')(x)
+
+model = Model(inputs=base_model.input, outputs=x)
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Residual Blocks: মডেলের প্রতিটি লেয়ার একে অপরের সাথে সংযুক্ত থাকে।
+
+Skip Connections: ইনপুট থেকে আউটপুটে সরাসরি সংযোগ তৈরি করা হয়, যাতে গ্রেডিয়েন্টের সমস্যা সমাধান হয়।
+
+১০. VGGNet (Visual Geometry Group Network)
+ব্যবহার:
+ইমেজ ক্লাসিফিকেশন, সেগমেন্টেশন এবং ফিচার এক্সট্রাকশন।
+
+কোড উদাহরণ:
+python
+Copy
+Edit
+from tensorflow.keras.applications import VGG16
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
+
+base_model = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+x = Dense(1024, activation='relu')(x)
+x = Dense(10, activation='softmax')(x)
+
+model = Model(inputs=base_model.input, outputs=x)
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Kernel Size: 3x3 ফিল্টার ব্যবহার করা হয়।
+
+Fully Connected Layers: ক্লাসিফিকেশন স্লাইয়ারের জন্য ব্যবহৃত হয়।
+
+১১. U-Net (For Image Segmentation)
+ব্যবহার:
+ইমেজ সেগমেন্টেশন (যেমন মেডিক্যাল ইমেজ সেগমেন্টেশন, সেল সেগমেন্টেশন)।
+
+কোড উদাহরণ:
+python
+Copy
+Edit
+from tensorflow.keras.models import Model
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, UpSampling2D, Input
+
+input_layer = Input(shape=(256, 256, 3))
+x = Conv2D(64, (3, 3), activation='relu', padding='same')(input_layer)
+x = MaxPooling2D(pool_size=(2, 2))(x)
+x = Conv2D(128, (3, 3), activation='relu', padding='same')(x)
+x = MaxPooling2D(pool_size=(2, 2))(x)
+
+x = UpSampling2D(size=(2, 2))(x)
+x = Conv2D(64, (3, 3), activation='relu', padding='same')(x)
+x = UpSampling2D(size=(2, 2))(x)
+x = Conv2D(1, (1, 1), activation='sigmoid')(x)
+
+model = Model(inputs=input_layer, outputs=x)
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Downsampling: ইনপুট ইমেজের সাইজ কমানো হয়, যাতে ফিচার গুলি সহজে পাওয়া যায়।
+
+Upsampling: সেগমেন্টেশন মাস্ক পুনরুদ্ধার করা হয় ইনপুট সাইজে।
+
+Skip Connections: তথ্য হারানো এড়াতে ইনপুট থেকে আউটপুটে সরাসরি সংযোগ।
+
+১২. Siamese Network
+ব্যবহার:
+ম্যাচিং, সিমিলারিটি বা ডিসিমিলারিটি নির্ধারণের জন্য ব্যবহৃত হয় (যেমন সিগনেচার ভেরিফিকেশন, ইমেজ ম্যাচিং)।
+
+কোড উদাহরণ:
+python
+Copy
+Edit
+from tensorflow.keras.layers import Input, Dense, Lambda
+from tensorflow.keras.models import Model
+from tensorflow.keras import backend as K
+
+input1 = Input(shape=(64, 64, 3))
+input2 = Input(shape=(64, 64, 3))
+
+shared_conv = Conv2D(64, (3, 3), activation='relu')
+
+x1 = shared_conv(input1)
+x2 = shared_conv(input2)
+
+distance = Lambda(lambda x: K.abs(x[0] - x[1]))([x1, x2])
+
+model = Model(inputs=[input1, input2], outputs=distance)
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+model.fit([x_train1, x_train2], y_train, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Distance Metric: সিমিলারিটি বা ডিসিমিলারিটি পরিমাপ করা হয়।
+
+Shared Weights: দুটি ইনপুটের জন্য একই লেয়ার ব্যবহার করা হয়।
+
+১৩. BERT (Bidirectional Encoder Representations from Transformers)
+ব্যবহার:
+নেচারাল ল্যাঙ্গুয়েজ প্রসেসিং (যেমন টেক্সট ক্লাসিফিকেশন, প্রশ্ন-উত্তর)।
+
+কোড উদাহরণ:
+python
+Copy
+Edit
+from transformers import TFAutoModelForSequenceClassification, AutoTokenizer
+
+model_name = "bert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = TFAutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+
+inputs = tokenizer(x_train, padding=True, truncation=True, return_tensors="tf")
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+model.fit(inputs.data, y_train, epochs=10, batch_size=32)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Bidirectional Attention: প্রতিটি শব্দের জন্য দুই দিক থেকে কনটেক্সট ব্যবহার করা হয়।
+
+Hidden Layers: লুকানো স্তরের সংখ্যা, যা মডেলের ক্ষমতা এবং প্রশিক্ষণের সময় নির্ধারণ করে।
+
+১৪. FastAI (High-Level API for PyTorch)
+ব্যবহার:
+ট্রেনিং দ্রুত করতে এবং PyTorch এর উপর উচ্চ-স্তরের API প্রদান করে। ছবি ক্লাসিফিকেশন, টেক্সট ক্লাসিফিকেশন, এবং রিগ্রেশন এর জন্য ব্যবহৃত হয়।
+
+কোড উদাহরণ:
+python
+Copy
+Edit
+from fastai.vision.all import *
+
+path = untar_data(URLs.PETS)
+dls = ImageDataLoaders.from_name_re(path, get_image_files(path), pat=r'(.+)_\d+.jpg$', item_tfms=Resize(224))
+
+learn = cnn_learner(dls, resnet34, metrics=accuracy)
+learn.fine_tune(1)
+গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
+Transfer Learning: পূর্ববর্তী প্রশিক্ষিত মডেল ব্যবহার করে নতুন মডেল তৈরি করা।
+
+Data Augmentation: ডেটা বাড়ানোর জন্য বিভিন্ন কৌশল ব্যবহৃত হয় যেমন রোটেশন, স্কেলিং।
 
 
 
-মডেল ও তাদের ব্যবহার:
-মডেল	                             কাজের ধরন	                                         উদাহরণ
-ANN	                             ট্যাবুলার ডেটা	লোন অনুমোদন,                           গ্রাহক সেগমেন্টেশন
-CNN	                             ইমেজ প্রসেসিং,কুকুর-বিড়াল চেনা,                       অবজেক্ট ডিটেকশন
-RNN	                             টাইম সিরিজ বা সিকোয়েন্স ডেটা	স্টক প্রাইস প্রেডিকশন,      টেক্সট জেনারেশন
-LSTM	                             লম্বা সিকোয়েন্স ডেটা,ভাষা মডেলিং,                      ভিডিও অ্যানালাইসিস
-GRU	                             টাইম সিরিজ ডেটা	                                 টাইম সিরিজ অ্যানালাইসিস
-Autoencoder	                     ডেটা কমপ্রেশন	                                 ফিচার এক্সট্রাকশন
-GAN	                             ডেটা জেনারেশন	                                 ফেক ইমেজ বা ডেটা তৈরি
-Transformer	                     টেক্সট ডেটা	ভাষা ট্রান্সলেশন,                           টেক্সট সামারাইজেশন
+মডেল ও তাদের ব্যবহার
+মডেল	                                               কাজের ধরন	                                                                   উদাহরণ
+ANN (Artificial Neural Network)	                       ট্যাবুলার ডেটা	                                                                   লোন অনুমোদন, গ্রাহক সেগমেন্টেশন
+CNN (Convolutional Neural Network)	                   ইমেজ প্রসেসিং, কুকুর-বিড়াল চেনা, অবজেক্ট ডিটেকশন	                               ইমেজ ক্লাসিফিকেশন, অবজেক্ট ডিটেকশন
+RNN (Recurrent Neural Network)	                       টাইম সিরিজ বা সিকোয়েন্স ডেটা	                                                   স্টক প্রাইস প্রেডিকশন, টেক্সট জেনারেশন
+LSTM (Long Short-Term Memory)	                       লম্বা সিকোয়েন্স ডেটা, ভাষা মডেলিং, ভিডিও অ্যানালাইসিস	                               ভাষা মডেলিং, ভিডিও অ্যানালাইসিস
+GRU (Gated Recurrent Unit)	                           টাইম সিরিজ ডেটা	                                                               টাইম সিরিজ অ্যানালাইসিস
+Autoencoder	                                           ডেটা কমপ্রেশন	                                                               ফিচার এক্সট্রাকশন, ডেটা পুনর্গঠন
+GAN (Generative Adversarial Network)	               ডেটা জেনারেশন	                                                               ফেক ইমেজ বা ডেটা তৈরি
+Transformer	                                           টেক্সট ডেটা	ভাষা ট্রান্সলেশন,                                                     টেক্সট সামারাইজেশন
+ResNet (Residual Networks)	                           ইমেজ ক্লাসিফিকেশন, অবজেক্ট ডিটেকশন	                                           ইমেজ সেগমেন্টেশন, হিউম্যান ডিটেকশন
+VGGNet (Visual Geometry Group Network)	               ইমেজ ক্লাসিফিকেশন	                                                           ছবি চেনা, ইমেজ ক্লাসিফিকেশন
+U-Net	                                               ইমেজ সেগমেন্টেশন	মেডিক্যাল                                                       ইমেজ সেগমেন্টেশন, সেল সেগমেন্টেশন
+Siamese Network	                                       সিমিলারিটি চেক,  ম্যাচিং	                                                       সিগনেচার ভেরিফিকেশন, ইমেজ ম্যাচিং
+BERT (Bidirectional Encoder Representations from Transformers)	নেচারাল ল্যাঙ্গুয়েজ প্রসেসিং	                                               টেক্সট ক্লাসিফিকেশন, প্রশ্ন-উত্তর সিস্টেম
+FastAI	                                               দ্রুত ডিপ লার্নিং মডেল ট্রেনিং	                                                       টেক্সট ক্লাসিফিকেশন, ইমেজ ক্লাসিফিকেশন
 
+
+
+
+
+
+
+
+
+
+হাইপারপ্যারামিটার টিউনিং টিপস:
+Learning Rate:
+খুব বেশি learning rate মডেলকে দ্রুত কনভার্জ করতে সাহায্য করতে পারে, তবে এটি স্থানীয় মিনিমা এড়াতে সাহায্য নাও করতে পারে। কম learning rate মডেলকে আরও সঠিকভাবে ট্রেন করতে সাহায্য করবে, তবে অনেক সময় নিতে পারে।
+টিপস: 0.001 বা 0.0001 দিয়ে শুরু করুন।
+
+Batch Size:
+বড় batch size দ্রুত convergence করতে সাহায্য করতে পারে, তবে মেমরি ইস্যু হতে পারে। ছোট batch size (যেমন ৮, ১৬) ভাল রেগুলারাইজেশন প্রদান করতে পারে।
+টিপস: ছোট batch size দিয়ে শুরু করুন, যেমন ১৬ বা ৩২।
+
+Epochs:
+অনেক সময় epochs বাড়ানো মডেলের overfitting হতে পারে। early stopping ব্যবহার করলে ভালো ফলাফল পাওয়া যাবে।
+টিপস: ৫০-১০০ epochs দিয়ে শুরু করুন, এবং validation loss মনিটর করে early stopping ব্যবহার করুন।
+
+Dropout Rate:
+dropout বেশি হলে মডেল আন্ডারফিট হতে পারে, কম হলে ওভারফিটিং হতে পারে।
+টিপস: 0.2 থেকে 0.5 এর মধ্যে dropout রাখুন।
+
+Activation Functions:
+ReLU দ্রুত কনভার্জেন্সে সহায়ক হলেও, কখনও কখনও Vanishing Gradient সমস্যা দেখা দেয়।
+টিপস: Leaky ReLU, ELU, অথবা Swish ব্যবহার করে দেখতে পারেন।
+
+Optimizer Selection:
+Adam সাধারণত সেরা, তবে SGD বা RMSprop ব্যবহার করতে পারেন, যদি অ্যানালাইসিস করতে চান যে কোনটি আপনার মডেলের জন্য ভাল কাজ করছে।
+টিপস: Adam দিয়ে শুরু করুন, এবং পরবর্তীতে অন্যান্য অপটিমাইজার নিয়ে পরীক্ষা করুন।
