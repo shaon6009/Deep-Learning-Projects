@@ -17,13 +17,9 @@ model.fit(x_train, y_train, epochs=10, batch_size=32)
 Input Layer Shape: ইনপুট ডেটার আকার। যেমন input_shape=(10,) মানে ১০টি ফিচার।
 
 Number of Neurons: প্রতিটি লেয়ার কতটি নিউরন থাকবে তা নির্ধারণ করে।
-
 Activation Function: মডেলটি কিভাবে আউটপুট বের করবে। যেমন relu, sigmoid।
-
 Optimizer: মডেলকে আপডেট করার জন্য ব্যবহৃত হয়। যেমন adam।
-
 Loss Function: আউটপুট কতটা ভুল তা জানার জন্য। যেমন binary_crossentropy।
-
 Batch Size: প্রতিটি ব্যাচে কতটি ডেটা পয়েন্ট থাকবে তা নির্ধারণ করে।
 
 
@@ -48,11 +44,8 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Kernel Size: কনভলিউশনাল লেয়ারের ফিল্টার সাইজ।
-
 Strides: কনভলিউশন অপারেশন চলাকালীন কতটা এগিয়ে যাবে।
-
 Pooling Size: ম্যাক্স পুলিং বা অ্যাভারেজ পুলিংয়ের সাইজ।
-
 Filters: কনভলিউশনাল লেয়ারে কতটি ফিল্টার থাকবে তা নির্ধারণ করে।
 
 
@@ -72,9 +65,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Units (Neurons): প্রতিটি RNN লেয়ারে নিউরনের সংখ্যা।
-
 Activation Function: tanh বা relu।
-
 Timesteps: সিকোয়েন্সের দৈর্ঘ্য বা টাইমস্টেপ।
 
 
@@ -94,9 +85,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Units: LSTM(50)-এ ৫০টি ইউনিট।
-
 Dropout Rate: রেগুলারাইজেশন জন্য ব্যবহৃত হয়।
-
 Return_sequences: True হলে প্রতিটি টাইমস্টেপের জন্য আউটপুট ফেরত দেয়।
 
 
@@ -116,7 +105,6 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 model.fit(x_train_seq, y_train_seq, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Units: GRU-তে ইউনিট সংখ্যা নির্ধারণ করে।
-
 Activation Function: tanh বা sigmoid।
 
 
@@ -139,7 +127,6 @@ model.compile(optimizer='adam', loss='mse')
 model.fit(x_train, x_train, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Encoding Dimension: অটোকোডারে ফিচার সংকুচিত করা হয়।
-
 Latent Space: ডেটার compressed representation।
 
 
@@ -165,7 +152,6 @@ discriminator = Sequential([
 discriminator.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Latent Space Dimension: input_dim=100 মানে এটি ১০০টি বৈশিষ্ট্য দিয়ে ইমেজ তৈরি করবে।
-
 Number of Layers: জেনারেটর ও ডিসক্রিমিনেটরের জন্য লেয়ার সংখ্যা নির্ধারণ করা।
 
 
@@ -184,7 +170,6 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 model.fit(inputs.data, y_train, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Hidden Size: লুকানো স্তরের আকার নির্ধারণ করে।
-
 Attention Heads: একাধিক অ্যাটেনশন হেড ব্যবহার করা হয় (যেমন ৮ বা ১২)।
 
 
@@ -208,7 +193,6 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Residual Blocks: মডেলের প্রতিটি লেয়ার একে অপরের সাথে সংযুক্ত থাকে।
-
 Skip Connections: ইনপুট থেকে আউটপুটে সরাসরি সংযোগ তৈরি করা হয়, যাতে গ্রেডিয়েন্টের সমস্যা সমাধান হয়।
 
 
@@ -232,7 +216,6 @@ model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accur
 model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Kernel Size: 3x3 ফিল্টার ব্যবহার করা হয়।
-
 Fully Connected Layers: ক্লাসিফিকেশন স্লাইয়ারের জন্য ব্যবহৃত হয়।
 
 
@@ -260,9 +243,7 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 model.fit(x_train_images, y_train_labels, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Downsampling: ইনপুট ইমেজের সাইজ কমানো হয়, যাতে ফিচার গুলি সহজে পাওয়া যায়।
-
 Upsampling: সেগমেন্টেশন মাস্ক পুনরুদ্ধার করা হয় ইনপুট সাইজে।
-
 Skip Connections: তথ্য হারানো এড়াতে ইনপুট থেকে আউটপুটে সরাসরি সংযোগ।
 
 
@@ -290,7 +271,6 @@ model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy']
 model.fit([x_train1, x_train2], y_train, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Distance Metric: সিমিলারিটি বা ডিসিমিলারিটি পরিমাপ করা হয়।
-
 Shared Weights: দুটি ইনপুটের জন্য একই লেয়ার ব্যবহার করা হয়।
 
 
@@ -310,7 +290,6 @@ model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=
 model.fit(inputs.data, y_train, epochs=10, batch_size=32)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Bidirectional Attention: প্রতিটি শব্দের জন্য দুই দিক থেকে কনটেক্সট ব্যবহার করা হয়।
-
 Hidden Layers: লুকানো স্তরের সংখ্যা, যা মডেলের ক্ষমতা এবং প্রশিক্ষণের সময় নির্ধারণ করে।
 
 
@@ -328,7 +307,6 @@ learn = cnn_learner(dls, resnet34, metrics=accuracy)
 learn.fine_tune(1)
 গুরুত্বপূর্ণ প্যারামিটার ও কাজ:
 Transfer Learning: পূর্ববর্তী প্রশিক্ষিত মডেল ব্যবহার করে নতুন মডেল তৈরি করা।
-
 Data Augmentation: ডেটা বাড়ানোর জন্য বিভিন্ন কৌশল ব্যবহৃত হয় যেমন রোটেশন, স্কেলিং।
 
 
